@@ -2,6 +2,8 @@ import express from "express"
 import dotenv from "dotenv"
 // import { GoogleGenAI } from "@google/genai"
 import { router } from "./routers/router.js"
+import cors from "cors"
+import "./database/connect.js"
 
 const app = express();
 
@@ -9,8 +11,15 @@ dotenv.config({path: "./config.env"})
 
 const port = process.env.PORT || 5030
 
+app.use(cors({
+    origin: "*",         // allow all origins OR replace "*" with your frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({extended : true}))
+app.use(express.static("/server/uploads"))
 
 // const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY})
 
@@ -25,7 +34,7 @@ app.use(express.urlencoded({extended : true}))
 
 // getResponse();
 
-app.get("/api",router)
+app.use("/api",router)
 
 app.listen(port, () =>{
     console.log(`Server is running on port ${port}`);

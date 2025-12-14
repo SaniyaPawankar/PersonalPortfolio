@@ -1,7 +1,8 @@
 import express from "express"
 import { upload } from "../middlewares/upload.js";
 
-import {  uploadFile } from "../controllers/controller.js"
+import { uploadFile } from "../controllers/controller.js"
+import { handleAdminRegistration } from "../controllers/userController.js";
 
 const router = express.Router();
 
@@ -17,6 +18,9 @@ const router = express.Router();
 // })
 
 // Route for uploading file
+
+router.post("/register", handleAdminRegistration)
+
 router.post("/upload", upload.single("file"), uploadFile)
 
-export {router}
+export { router }

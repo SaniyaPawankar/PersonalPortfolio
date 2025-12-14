@@ -27,6 +27,7 @@
 const uploadFile = (req,res) => {
    if(!req.file){
     let result = res.status(400).json({msg: "No file uploaded"})
+    return result
    }
    return res.status(200).json({success: true, msg: "File uploaded successfully!", file: req.file})
 }
