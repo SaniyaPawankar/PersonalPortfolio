@@ -9,20 +9,26 @@ import path from "path"
 const storage = multer.diskStorage({
     // 'destination' tells multer where to store uploaded files 
     destination: (req, file, cb) => {
-        cb(null, "/server/uploads");
+        cb(null, "uploads/gallery");
         // uploads is the folder where files will be saved
         // cb(null, ...) means no error + store here
     },
 
     filename: (req, file, cb) => {
-        const uploadPath = Date.now() + file.originalname
-        cb(null, uploadPath)
+        const uniqueName = Date.now() + "-" +  path.extname(file.originalname)
+        cb(null, uniqueName)
     }
 })
+ 
+const fileFilter = (req,file,cb) => {
+    if(
+        file.mimetype === "image/jpeg" || file.mimetype === "image/png" || file.m
+    )
+}
 
 
 // Create multer instance with storage settings
-const upload = multer({ storage })
+const uploadProjectImage = multer({ storage })
 
 export { upload }
 
