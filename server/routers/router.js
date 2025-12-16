@@ -1,8 +1,9 @@
 import express from "express"
-import { upload } from "../middlewares/upload.js";
+import { uploadProjectImage } from "../middlewares/upload.js";
 
 import { uploadFile } from "../controllers/controller.js"
 import { handleAdminRegistration } from "../controllers/userController.js";
+import { addProject } from "../controllers/projectController.js";
 
 const router = express.Router();
 
@@ -21,6 +22,6 @@ const router = express.Router();
 
 router.post("/register", handleAdminRegistration)
 
-router.post("/upload", upload.single("file"), uploadFile)
+router.post("/projects", uploadProjectImage.single("image"), addProject)
 
 export { router }

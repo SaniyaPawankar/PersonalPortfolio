@@ -10,7 +10,7 @@ const projectSchema = new mongoose.Schema({
         required: true
     },
     techStack: {
-        type: String,
+        type: [String],
         required: true
     },
     image: {

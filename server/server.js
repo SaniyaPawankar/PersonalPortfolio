@@ -4,6 +4,7 @@ import dotenv from "dotenv"
 import { router } from "./routers/router.js"
 import cors from "cors"
 import "./database/connect.js"
+import path from "path"
 
 const app = express();
 
@@ -19,7 +20,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.urlencoded({extended : true}))
-app.use(express.static("/server/uploads"))
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")))
 
 // const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY})
 
