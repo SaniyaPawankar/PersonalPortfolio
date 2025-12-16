@@ -24,16 +24,36 @@ let addProject = async(req,res) => {
     }
 }
 
-let getAllProjects = async(req,res) => {
+const getAllProjects = async (req, res) => {
+  try {
+    const projects = await projectModel.find();
+    res.status(200).json({ projects });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
 
-}
 
-let deleteProject = async(req,res) => {
+let deleteProject = async (req, res) => {
+  try {
+    const { id } = req.params;
 
-}
+    const project = await projectModel.findById(id);
+    if (!project) {
+      return res.status(404).json({ message: "Project not found" });
+    }
+
+    await projectModel.findByIdAndDelete(id);
+
+    res.status(200).json({ message: "Project deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 
 let updateProject = async(req,res) => {
 
 }
 
-export { addProject }
+export { addProject, getAllProjects, deleteProject }

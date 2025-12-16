@@ -2,14 +2,14 @@ import React from 'react'
 
 const Hero = () => {
   return (
-            <div className='hero w-full max-h-screen  bg-indigo-950 p-4'>
+            <div id="home" className='w-full max-h-screen  bg-indigo-950 p-4'>
                 <nav className='text-white sticky top-2 z-50'>
                     <div className='navbar  flex flex-row justify-between items-center '>
                         <h2 className='text-2xl font-bold'>John Doe</h2>
                         <div className='flex flex-row justify-around gap-4'>
-                            <a href="">Home</a>
-                            <a href="">About</a>
-                            <a href="">Projects</a>
+                            <a href="#home">Home</a>
+                            <a href="#about">About</a>
+                            <a href="#project">Projects</a>
                             <a href="">Skills</a>
                             <a href="">Contact</a>
                         </div>
