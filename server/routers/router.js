@@ -1,7 +1,7 @@
 import express from "express"
 import { uploadProjectImage } from "../middlewares/upload.js";
 
-import { uploadFile } from "../controllers/chatController.js"
+
 import { handleAdminRegistration } from "../controllers/userController.js";
 import { addProject, getAllProjects, deleteProject } from "../controllers/projectController.js";
 
