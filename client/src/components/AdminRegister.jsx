@@ -13,111 +13,157 @@ const AdminRegister = () => {
 
     const handleInputChange = (event) => {
         let { name, value } = event.target;
-
-        setFormData((prev) => {
-            return { ...prev, [name]: value }
-        });
-    }
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
 
         if (!formData.name || !formData.phone || !formData.email || !formData.address || !formData.password) {
-            alert("Please fill all the fields!")
-            return
+            alert("Please fill all the fields!");
+            return;
         }
 
         try {
-            const result = await axios({
-                method: "POST",
-                url: "http://localhost:5020/api/register",
-                data: formData
-            })
-
+            const result = await axios.post(
+                "http://localhost:5020/api/register",
+                formData
+            );
             console.log(result.data);
-            console.log(formData)
         } catch (err) {
-            console.log("Error while registering ", err)
+            console.log("Error while registering ", err);
         }
-    }
+    };
 
     const nameRegex = /^[A-Za-z]{3,}(?:\s+[A-Za-z]{3,})+$/;
     const phoneRegex = /^[6-9]\d{9}$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
-
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
     return (
-        <div className='w-full min-h-screen bg-slate-200 flex items-center justify-center'>
-            <div className='bg-black text-white w-[500px] p-7  rounded-md  shadow-blue-200 shadow-lg '>
-                <h2 className='text-2xl font-bold text-center mb-6'>
-                    Admin Registration
+        <section
+            className="relative w-full min-h-screen flex items-center justify-center
+            bg-gradient-to-b from-black via-[#12001f] to-[#0b0014] px-4 text-white"
+        >
+            {/* Glow */}
+            <div className="absolute inset-0 blur-3xl
+                bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.18),transparent_70%)]">
+            </div>
+
+            {/* Card */}
+            <div className="relative z-10 w-full max-w-md
+                bg-white/5 backdrop-blur-md border border-white/10
+                rounded-2xl shadow-lg p-8">
+
+                <h2 className="text-3xl font-bold text-center mb-8">
+                    Admin <span className="text-violet-400">Registration</span>
                 </h2>
-                <form onSubmit={handleFormSubmit}>
-                    <div className='flex flex-col gap-2 mx-3 my-2'>
-                        <label htmlFor='name'>Enter Full Name</label>
-                        <input onChange={handleInputChange} className='' type="text" placeholder='Enter you name here' name="name" value={formData.name} id="name" />
-                        {/* Name Validation Message */}
-                        {
-                            formData.name && !nameRegex.test(formData.name) && (
-                                <div className="text-red-600 text-sm bg-red-50 border border-red-300 p-2 rounded">
-                                    Name must contain only letters and be atleast 3 characters long.
-                                </div>
-                            )
-                        }
+
+                <form onSubmit={handleFormSubmit} className="flex flex-col gap-5">
+
+                    {/* Name */}
+                    <div>
+                        <label className="block mb-1 text-sm">Full Name</label>
+                        <input
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            placeholder="Enter your name"
+                            className="w-full bg-black/40 border border-white/10 rounded-md
+                            px-4 py-2 outline-none focus:border-violet-400"
+                        />
+                        {formData.name && !nameRegex.test(formData.name) && (
+                            <p className="text-red-400 text-xs mt-1">
+                                Name must be at least 3 letters and alphabetic.
+                            </p>
+                        )}
                     </div>
-                    <div className='flex flex-col gap-2 mx-3 my-2'>
-                        <label htmlFor='phone'>Enter your phone number</label>
-                        <input onChange={handleInputChange} className='' type="tel" placeholder='Enter your phone number' name="phone" value={formData.phone} id="phone" />
-                        {/* Phone Validation Message */}
-                        {
-                            formData.phone && !phoneRegex.test(formData.phone) && (
-                                <div className="text-red-600 text-sm bg-red-50 border border-red-300 p-2 rounded">
-                                    Please enter a valid 10-digit phone number starting with 6,7,8 or 9.
-                                </div>
-                            )
-                        }
+
+                    {/* Phone */}
+                    <div>
+                        <label className="block mb-1 text-sm">Phone</label>
+                        <input
+                            type="tel"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleInputChange}
+                            placeholder="Enter phone number"
+                            className="w-full bg-black/40 border border-white/10 rounded-md
+                            px-4 py-2 outline-none focus:border-violet-400"
+                        />
+                        {formData.phone && !phoneRegex.test(formData.phone) && (
+                            <p className="text-red-400 text-xs mt-1">
+                                Enter valid 10-digit number (6–9).
+                            </p>
+                        )}
                     </div>
-                    <div className='flex flex-col gap-2 mx-3 my-2'>
-                        <label htmlFor='email'>Enter email address</label>
-                        <input onChange={handleInputChange} className='' type="email" placeholder='Enter your email id' name="email" value={formData.email} id="email" />
-                        {
-                            formData.email && !emailRegex.test(formData.email) && (
-                                <div className="text-red-600 text-sm bg-red-50 border border-red-300 p-2 rounded">
-                                    Please enter a valid email address (example: name@example.com).
-                                </div>
-                            )
-                        }
+
+                    {/* Email */}
+                    <div>
+                        <label className="block mb-1 text-sm">Email</label>
+                        <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            placeholder="example@email.com"
+                            className="w-full bg-black/40 border border-white/10 rounded-md
+                            px-4 py-2 outline-none focus:border-violet-400"
+                        />
+                        {formData.email && !emailRegex.test(formData.email) && (
+                            <p className="text-red-400 text-xs mt-1">
+                                Enter a valid email address.
+                            </p>
+                        )}
                     </div>
-                    <div className='flex flex-col gap-2 mx-3 my-2'>
-                        <label htmlFor='address'>Enter Address</label>
-                        <textarea onChange={handleInputChange} className='' placeholder='Enter your address' name="address" value={formData.address} id="address" rows={10}></textarea>
+
+                    {/* Address */}
+                    <div>
+                        <label className="block mb-1 text-sm">Address</label>
+                        <textarea
+                            name="address"
+                            value={formData.address}
+                            onChange={handleInputChange}
+                            rows="3"
+                            placeholder="Enter address"
+                            className="w-full bg-black/40 border border-white/10 rounded-md
+                            px-4 py-2 outline-none focus:border-violet-400 resize-none"
+                        />
                     </div>
-                    <div className='flex flex-col gap-2 mx-3 my-2'>
-                        <label htmlFor='password'>Create Password</label>
-                        <input onChange={handleInputChange} className='' type="password" placeholder='Enter password' name="password" value={formData.password} id="password" />
-                        {/* Password Validation Message */}
-                        {
-                            formData.password && !passwordRegex.test(formData.password) && (
-                                <div className="bg-red-50 text-red-700 border border-red-300 p-3 rounded text-sm">
-                                    <p className="font-semibold">Password must contain:</p>
-                                    <ul className="list-disc ml-5 mt-1">
-                                        <li>At least 8 characters</li>
-                                        <li>One uppercase letter</li>
-                                        <li>One lowercase letter</li>
-                                        <li>One number</li>
-                                    </ul>
-                                </div>
-                            )
-                        }
+
+                    {/* Password */}
+                    <div>
+                        <label className="block mb-1 text-sm">Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleInputChange}
+                            placeholder="Create password"
+                            className="w-full bg-black/40 border border-white/10 rounded-md
+                            px-4 py-2 outline-none focus:border-violet-400"
+                        />
+                        {formData.password && !passwordRegex.test(formData.password) && (
+                            <p className="text-red-400 text-xs mt-1">
+                                Min 8 chars, 1 uppercase, 1 lowercase, 1 number.
+                            </p>
+                        )}
                     </div>
-                    <div className='flex flex-col items-center justify-center'>
-                        <button className='bg-white text-black px-3 py-2'>Register</button>
-                    </div>
+
+                    {/* Button */}
+                    <button
+                        type="submit"
+                        className="mt-4 bg-violet-600 hover:bg-violet-700
+                        transition rounded-md py-2 font-semibold"
+                    >
+                        Register
+                    </button>
+
                 </form>
             </div>
-        </div>
-    )
-}
+        </section>
+    );
+};
 
-export default AdminRegister
+export default AdminRegister;
