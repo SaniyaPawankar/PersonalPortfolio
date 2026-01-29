@@ -7,9 +7,15 @@ const FeedbackForm = () => {
     message: "",
   });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleChange = (event) => {
+    let { name, value } = event.target
+    setFormData((prev) => ({
+      ...prev, [name]: value
+    }))
+  }
+
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +24,7 @@ const FeedbackForm = () => {
   };
 
   return (
-    <section
+    <div
       id="feedback"
       className="relative w-full min-h-screen overflow-hidden
       bg-gradient-to-b from-black via-[#12001f] to-[#0b0014]
@@ -29,11 +35,11 @@ const FeedbackForm = () => {
         bg-[radial-gradient(circle_at_right,rgba(168,85,247,0.18),transparent_70%)]">
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto">
+      <div className="relative max-w-[700px] sm:w-[500px] mx-auto">
 
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold">
+          <h2 className="text-4xl md:text-5xl  font-bold">
             Leave a <span className="text-violet-400">Review</span>
           </h2>
           <p className="text-gray-400 mt-4">
@@ -44,7 +50,7 @@ const FeedbackForm = () => {
         {/* Form */}
         <form
           onSubmit={handleSubmit}
-          className="bg-white/5 backdrop-blur-md border border-white/10
+          className="bg-white/5 backdrop-blur-md 
           rounded-xl p-8 shadow-lg flex flex-col gap-6"
         >
           <input
@@ -87,7 +93,7 @@ const FeedbackForm = () => {
         </form>
 
       </div>
-    </section>
+    </div>
   );
 };
 

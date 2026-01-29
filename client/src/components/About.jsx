@@ -15,17 +15,17 @@ const About = () => {
                     </div>
                     <div className='bg-white shadow-md p-4 flex flex-row justify-around rounded-md '>
                         <div className='flex flex-row justify-center items-center gap-3 '>
-                            <i className="fa-solid fa-computer text-blue-700"></i>
-                            <h4 className='text-purple-950'>B.Tech in Computer Science</h4>
+                            <i className="fa-solid fa-computer text-purple-500"></i>
+                            <h4 className='text-purple-700'>B.Tech in Computer Science</h4>
                         </div>
                         <div className='flex flex-row justify-center items-center gap-3'>
-                            <i className="fa-regular fa-circle-user text-blue-700"></i>
-                            <h4 className='text-purple-950'>2+ Years of Experience</h4>
+                            <i className="fa-regular fa-circle-user text-purple-500"></i>
+                            <h4 className='text-purple-700'>2+ Years of Experience</h4>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <image />
+                    {/* <image /> */}
                 </div>
             </div>
         </div>

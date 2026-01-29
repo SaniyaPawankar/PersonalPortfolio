@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const Project = () => {
+
+  const isAdmin = !!localStorage.getItem("adminToken")
+  const [showAdd, setShowAdd] = useState(false)
 
   const [projects, setProjects] = useState([])
 
@@ -17,24 +21,43 @@ const Project = () => {
     getProjects()
   }, [])
 
+
   const SERVER_URL = "http://localhost:5020"
+
+  const navigate = useNavigate();
 
   return (
     <div id="project" className="relative w-full overflow-hidden
                  bg-gradient-to-b from-[#0b0014] via-[#12001f] to-black
                  px-6 py-20 ">
-      <h2 className='text-3xl sm:text-4xl font-bold text-center text-purple-100'>
-        Projects
-      </h2>
+
+      <div className='relative flex justify-center items-center gap-3'
+      onMouseEnter={() => setShowAdd(true)}
+      onMouseLeave={() => setShowAdd(false)}>
+        <h2 className='text-3xl sm:text-4xl font-bold text-center text-purple-100'>
+          Projects
+        </h2>
+
+        {
+          isAdmin && showAdd && (
+            <button className='w-8 h-8 rounded-full bg-purple-600 text-white text-xl
+             flex items-center justify-center hover:bg-purple-700 transition'>
+              +
+            </button>
+          )
+        }
+      </div>
+
       <p className='text-center text-gray-100 mt-2'>
         Some of my recent work
       </p>
 
-      <div className='grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 sm:gap-5 lg:gap-12 sm:mx-6 sm:my-8 lg:m-14'>
+      <div className='grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 sm:gap-5 lg:gap-12 sm:mx-6 sm:my-8 lg:m-14 cursor-pointer rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden '>
         {projects.map(project => (
           <div
             key={project._id}
             className='bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden flex flex-col'
+            onClick={() => navigate(`/projects/${project._id}`)}
           >
             {/* Image */}
             <img
@@ -140,7 +163,7 @@ export default Project
 //                  px-6 py-20 text-white"
 //     >
 //       {/* Glow */}
-//       <div className="absolute inset-0 blur-3xl 
+//       <div className="absolute inset-0 blur-3xl
 //         bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.25),transparent_70%)]">
 //       </div>
 

@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import axios from "axios"
+import { useNavigate } from 'react-router-dom';
 
 const AdminRegister = () => {
+
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         name: "",
@@ -30,7 +33,8 @@ const AdminRegister = () => {
                 formData
             );
             console.log(result.data);
-        } catch (err) {
+            navigate("/admin/login")
+        } catch (err){
             console.log("Error while registering ", err);
         }
     };
@@ -153,7 +157,7 @@ const AdminRegister = () => {
 
                     {/* Button */}
                     <button
-                        type="submit"
+                        type="submit" 
                         className="mt-4 bg-violet-600 hover:bg-violet-700
                         transition rounded-md py-2 font-semibold"
                     >
