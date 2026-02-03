@@ -16,7 +16,9 @@ const UpdateProject = () => {
     });
 
     const [image, setImage] = useState(null);
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
+
+    const token = localStorage.getItem("adminToken");
 
     // Fetch existing project
     useEffect(() => {
@@ -43,9 +45,9 @@ const UpdateProject = () => {
     }, [id])
 
     const handleInputChange = (e) => {
-        let { name, value } = e.target;
-        setFormData(prev => ({ prev, [name]: value }))
-    }
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
 
     const handleImageChange = (e) => {
         setImage(e.target.files[0])
@@ -65,12 +67,17 @@ const UpdateProject = () => {
         }
 
         try {
-            await axios.put(`https://localhost:5020/api/projects/${id}`, data, {
-                headers: {
-                    "Content-Type": "multipart/form-data"
+            await axios.put(
+                `http://localhost:5020/api/projects/${id}/edit`,
+                data,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
                 }
-            });
-            navigate("/projects/${id}");
+            );
+
+            navigate(`/projects/${id}`);
         } catch (err) {
             console.log(err);
         }
@@ -185,7 +192,7 @@ const UpdateProject = () => {
                             type="file"
                             accept="image/*"
                             onChange={handleImageChange}
-                            className="w-full text-sm text-gray-300"                
+                            className="w-full text-sm text-gray-300"
                         />
                     </div>
 

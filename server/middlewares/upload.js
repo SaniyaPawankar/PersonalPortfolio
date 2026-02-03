@@ -2,6 +2,7 @@ import multer from "multer"
 // multer package is used for handling file uploads.
 
 import path from "path"
+import fs from "fs"
 // path module helps in working with file extension
 
 // Configure storage settings for multer
@@ -13,29 +14,34 @@ const storage = multer.diskStorage({
         // uploads is the folder where files will be saved
         // cb(null, ...) means no error + store here
 
-        const uploadType = req.params.type;
+        let uploadPath = "uploads/projects";
 
-        if(uploadType === "project"){
-            cb(null, "uploads/projects");
-        }else if(uploadType === "gallery"){
-            cb(null, "uploads/gallery");
-        }else if(uploadType === "blog"){
-            cb(null, "uploads/blogs");
-        }else{
-            cb(null, false)
+        if (req.baseUrl.includes("gallery")) {
+            uploadPath = "uploads/gallery";
+        } else if (req.baseUrl.includes("blogs")) {
+            uploadPath = "uploads/blogs";
         }
+
+        //Check if the upload directory already exists
+        if (!fs.existsSync(uploadPath)) {
+            // If the folder does not exist, create it
+            // 'recursive: true' ensures that parent folders are also created if missing
+            fs.mkdirSync(uploadPath, { recursive: true });
+        }
+
+        cb(null, uploadPath)
     },
 
     filename: (req, file, cb) => {
-        const uniqueName = Date.now() + "-" +  path.extname(file.originalname)
+        const uniqueName = Date.now() + "-" + path.extname(file.originalname)
         cb(null, uniqueName)
     }
 })
- 
-const fileFilter = (req,file,cb) => {
-    if(file.mimetype.startsWith("image/")){
-        cb(null,true)
-    }else{
+
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype.startsWith("image/")) {
+        cb(null, true)
+    } else {
         cb(new Error("Only image files allowed"), false)
     }
 };

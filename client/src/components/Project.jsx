@@ -32,18 +32,21 @@ const Project = () => {
                  px-6 py-20 ">
 
       <div className='relative flex justify-center items-center gap-3'
-      onMouseEnter={() => setShowAdd(true)}
-      onMouseLeave={() => setShowAdd(false)}>
+        onMouseEnter={() => setShowAdd(true)}
+        onMouseLeave={() => setShowAdd(false)}>
         <h2 className='text-3xl sm:text-4xl font-bold text-center text-purple-100'>
           Projects
         </h2>
 
         {
           isAdmin && showAdd && (
-            <button className='w-8 h-8 rounded-full bg-purple-600 text-white text-xl
-             flex items-center justify-center hover:bg-purple-700 transition'>
-              +
+            <button className='rounded-lg px-3 py-2 bg-purple-600 text-white font-mono
+             flex items-center justify-center hover:bg-purple-700 transition' onClick={() => navigate("/addprojects")}>
+              Add Project
             </button>
+
+          
+
           )
         }
       </div>
@@ -112,7 +115,7 @@ const Project = () => {
           </div>
         ))}
       </div>
-    </div>
+    </div >
   )
 }
 
