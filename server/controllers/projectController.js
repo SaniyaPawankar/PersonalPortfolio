@@ -45,7 +45,7 @@ const getProjectById = async (req, res) => {
 
     res.status(200).json({ project })
   } catch (err) {
-    console.error("Error fetching project:", error);
+    console.error("Error fetching project:", err);
     res.status(500).json({ message: "Server error" });
   }
 }

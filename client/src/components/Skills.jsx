@@ -15,9 +15,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="relative w-full min-h-screen overflow-hidden
-      bg-gradient-to-b from-black via-[#12001f] to-[#0b0014]
-      px-6 py-24 text-white"
+      className="relative w-full min-h-screen overflow-hidden px-6 py-24 text-black"
     >
       {/* Glow
       <div className="absolute inset-0 blur-3xl 

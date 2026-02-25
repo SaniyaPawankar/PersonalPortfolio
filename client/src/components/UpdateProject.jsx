@@ -54,6 +54,7 @@ const UpdateProject = () => {
     }
 
     const handleFormSubmit = async (e) => {
+
         e.preventDefault();
 
         const data = new FormData();
@@ -89,10 +90,10 @@ const UpdateProject = () => {
 
     return (
         <section className="min-h-screen flex items-center justify-center 
-    bg-gradient-to-br from-black via-[#0e001a] to-black px-4">
+    bg-white px-4">
 
-            <div className="w-full max-w-2xl bg-[#0f0f14] border border-white/10 
-      rounded-2xl shadow-xl p-10 text-white">
+            <div className="w-full max-w-2xl border border-white/10 
+      rounded-2xl shadow-xl p-10 text-black">
 
                 {/* Header */}
                 <h2 className="text-3xl font-semibold mb-8 text-center">

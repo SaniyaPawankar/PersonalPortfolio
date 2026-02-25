@@ -2,16 +2,20 @@ import React from 'react'
 
 const About = () => {
     return (
-        <div id="about" className='relative w-full min-h-screen overflow-hidden 
-                 bg-gradient-to-b from-black via-[#12001f] to-[#0b0014]
-                 px-6 py-20 text-white'>
+        <div id="about" >
             <div className="flex flex-row mx-10">
                 <div className='flex flex-col gap-4'>
                     <h1 className='text-4xl font-bold'>About Me</h1>
                     <div>
-                        <span className='block'>I am a passionate full-stack developer with experience in building web</span>
-                        <span className='block '>applications using the MERN stack. I love creating efficient and scalable</span>
-                        <span className='block'>solutions through clean and maintainble code.</span>
+                        <span>
+                            I am a final-year Computer Science student with a strong interest in full-stack web development.<br/>
+                            I have completed a MERN stack course and built multiple projects involving authentication,<br/>
+                            CRUD operations, and REST APIs.<br/>
+                            <br/>
+                            Along with development, I am actively preparing for Data Strcutures and Algorithms in JavaScript<br/>
+                            for placement opportunities. I enjoy learning by building and continuously improving<br/>
+                            my problem-solving skills.<br/>
+                        </span>
                     </div>
                     <div className='bg-white shadow-md p-4 flex flex-row justify-around rounded-md '>
                         <div className='flex flex-row justify-center items-center gap-3 '>
@@ -20,7 +24,7 @@ const About = () => {
                         </div>
                         <div className='flex flex-row justify-center items-center gap-3'>
                             <i className="fa-regular fa-circle-user text-purple-500"></i>
-                            <h4 className='text-purple-700'>2+ Years of Experience</h4>
+                            <h4 className='text-purple-700'>MERN Stack</h4>
                         </div>
                     </div>
                 </div>

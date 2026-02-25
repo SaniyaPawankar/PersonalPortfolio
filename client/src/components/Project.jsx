@@ -25,10 +25,10 @@ const Project = () => {
   const SERVER_URL = "http://localhost:5020"
 
   const navigate = useNavigate();
+  
 
   return (
     <div id="project" className="relative w-full overflow-hidden
-                 bg-gradient-to-b from-[#0b0014] via-[#12001f] to-black
                  px-6 py-20 ">
 
       <div className='relative flex justify-center items-center gap-3'
@@ -40,8 +40,7 @@ const Project = () => {
 
         {
           isAdmin && showAdd && (
-            <button className='rounded-lg px-3 py-2 bg-purple-600 text-white font-mono
-             flex items-center justify-center hover:bg-purple-700 transition' onClick={() => navigate("/addprojects")}>
+            <button  onClick={() => navigate("/addprojects")}>
               Add Project
             </button>
 

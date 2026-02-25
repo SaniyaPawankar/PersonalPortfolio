@@ -16,8 +16,8 @@ const Hero = () => {
 
   return (
             <div id="home" className="relative w-full min-h-screen overflow-hidden 
-                 bg-gradient-to-b from-[#0b0014] via-[#12001f] to-black px-6">
-                <nav className='text-white sticky top-2 z-50'>
+                  px-6">
+                <nav className='text-black sticky top-2 z-50'>
                     <div className='navbar  flex flex-row justify-between items-center '>
                         <h2 className='text-2xl font-bold cursor-pointer'>John Doe</h2>
                         <div className='flex flex-row  gap-6'>
@@ -49,16 +49,16 @@ const Hero = () => {
  
                
 
-                <div className='relative w-full min-h-screen overflow-hidden 
-                  bg-gradient-to-b from-[#0b0014] via-[#12001f] to-black px-6 text-white flex flex-col gap-3 justify-center'>
-                    <span className='text-6xl font-bold block'>Hi, I'm John Doe</span>
-                    <span className='text-4xl font-bold block'>MERN Stack Devloper</span>
-                    <span className='text-xl block'>I build modern web applications using MongoDB,<br />
-                        Express, React, and Node.js
+                <div className='relative w-full min-h-screen overflow-hidden  px-6 text-black flex flex-col gap-3 justify-center'>
+                    <span className='text-4xl font-bold block'>Hi, I'm Saniya Pawankar</span>
+                    <span className='text-2xl font-bold block'>Full Stack Developer (MERN) | Final Year Student </span>
+                    <span className='text-xl block'>
+                        I build responsive full-stack web applications using MongoDB, Express, React, and Node.js.<br></br>
+                        Currently focused on improving DSA and building real-world projects for placements.
                     </span>
                     <div className='flex flex-row gap-4 items-center'>
-                        <button className='bg-purple-500 text-white font-bold rounded-md px-5 py-3 outline-none'>View My Projects</button>
-                        <button className='bg-transparent font-bold border  border-white rounded-md  outline-none px-6 py-3'>Contact Me</button>
+                        <button className='bg-purple-500 text-white font-bold rounded-md px-5 py-3 outline-none'><a href="#project">View My Projects</a></button>
+                        <button className='bg-black font-bold border text-white  border-white rounded-md  outline-none px-6 py-3'><a href="#contact">Contact Me</a></button>
                     </div>
                 </div>
             </div>

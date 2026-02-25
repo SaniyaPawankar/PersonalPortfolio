@@ -10,7 +10,7 @@ import FeedbackForm from './FeedbackForm.jsx'
 
 const HomePage = () => {
     return (
-        <div className='w-full min-h-screen  bg-gradient-to-b from-[#0b0014] via-[#12001f] to-black' >
+        <div className='w-full min-h-screen' >
             <Hero />
 
             {/*--About Section--*/}

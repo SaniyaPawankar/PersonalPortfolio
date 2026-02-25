@@ -46,8 +46,7 @@ const AdminRegister = () => {
 
     return (
         <section
-            className="relative w-full min-h-screen flex items-center justify-center
-            bg-gradient-to-b from-black via-[#12001f] to-[#0b0014] px-4 text-white"
+            className="relative w-full min-h-screen flex items-center justify-center px-4 text-black"
         >
             {/* Glow */}
             <div className="absolute inset-0 blur-3xl

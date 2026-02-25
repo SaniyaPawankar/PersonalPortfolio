@@ -66,8 +66,7 @@ const ProjectDetails = () => {
 
 
     return (
-        <div className="w-full min-h-screen px-6 py-20 
-bg-gradient-to-b from-[#0b0014] via-[#12001f] to-black">
+        <div className="w-full min-h-screen px-6 py-20 ">
 
             {/* Admin Actions*/}
 

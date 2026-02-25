@@ -62,11 +62,10 @@ const AddProject = () => {
     }
 
     return (
-        <section className="min-h-screen flex items-center justify-center bg-gradient-t-br from-black
-    via-[#0e001a] to-black px-4 py-5">
+        <section className="min-h-screen flex items-center justify-center  px-4 py-5">
 
-            <div className="w-full max-w-2xl bg-[#0f0f14] border border-white/10
-        rounded-2xl  shadow-xl p-10 text-white">
+            <div className="w-full max-w-2xl  border border-white/10
+        rounded-2xl  shadow-xl p-10 text-black">
 
                 <h2 className="text-3xl font-semibold mb-8 text-center">Add
                     <span className="text-violet-400"> New Project</span>

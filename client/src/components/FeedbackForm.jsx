@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import axios from "axios"
 
 const FeedbackForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: "",
+    feedback: "",
   });
 
   const handleChange = (event) => {
@@ -14,24 +15,31 @@ const FeedbackForm = () => {
     }))
   }
 
-
-
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    // later connect to backend API
+    try {
+      await axios.post("http://localhost:5020/api/submit_review", formData)
+      alert("Feedback submitted!")
+    } catch (err) {
+      console.error("Error while submitting feedback", err)
+    }
+    setFormData({
+      name: "",
+      email: "",
+      feedback: "",
+    })
   };
+
+
 
   return (
     <div
       id="feedback"
       className="relative w-full min-h-screen overflow-hidden
-      bg-gradient-to-b from-black via-[#12001f] to-[#0b0014]
-      px-6 py-24 text-white"
+      px-6 py-24 text-black"
     >
       {/* Glow */}
-      <div className="absolute inset-0 blur-3xl 
+      <div className="absolute inset-0 blur-3xl
         bg-[radial-gradient(circle_at_right,rgba(168,85,247,0.18),transparent_70%)]">
       </div>
 
@@ -50,12 +58,13 @@ const FeedbackForm = () => {
         {/* Form */}
         <form
           onSubmit={handleSubmit}
-          className="bg-white/5 backdrop-blur-md 
+          className="bg-white/5 backdrop-blur-md
           rounded-xl p-8 shadow-lg flex flex-col gap-6"
         >
           <input
             type="text"
             name="name"
+            value={formData.name}
             placeholder="Your Name"
             required
             onChange={handleChange}
@@ -66,6 +75,7 @@ const FeedbackForm = () => {
           <input
             type="email"
             name="email"
+            value={formData.email}
             placeholder="Your Email"
             required
             onChange={handleChange}
@@ -74,7 +84,8 @@ const FeedbackForm = () => {
           />
 
           <textarea
-            name="message"
+            name="feedback"
+            value={formData.feedback}
             rows="4"
             placeholder="Your feedback"
             required
