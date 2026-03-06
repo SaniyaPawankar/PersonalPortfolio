@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import axios from "axios"
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AdminRegister = () => {
 
@@ -15,7 +15,7 @@ const AdminRegister = () => {
     });
 
     const handleInputChange = (event) => {
-        let { name, value } = event.target;
+        const { name, value } = event.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
@@ -32,9 +32,11 @@ const AdminRegister = () => {
                 "http://localhost:5020/api/register",
                 formData
             );
+
             console.log(result.data);
-            navigate("/admin/login")
-        } catch (err){
+            navigate("/admin/login");
+
+        } catch (err) {
             console.log("Error while registering ", err);
         }
     };
@@ -45,39 +47,34 @@ const AdminRegister = () => {
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
     return (
-        <section
-            className="relative w-full min-h-screen flex items-center justify-center px-4 text-black"
-        >
-            {/* Glow */}
-            <div className="absolute inset-0 blur-3xl
-                bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.18),transparent_70%)]">
-            </div>
+        <section className="min-h-screen flex items-center justify-center bg-section px-6 py-20">
 
-            {/* Card */}
-            <div className="relative z-10 w-full max-w-md
-                bg-white/5 backdrop-blur-md border border-white/10
-                rounded-2xl shadow-lg p-8">
+            <div className="w-full max-w-md bg-white rounded-xl shadow-md p-8">
 
-                <h2 className="text-3xl font-bold text-center mb-8">
-                    Admin <span className="text-violet-400">Registration</span>
+                <h2 className="text-3xl font-bold text-heading text-center mb-8">
+                    Admin Registration
                 </h2>
 
                 <form onSubmit={handleFormSubmit} className="flex flex-col gap-5">
 
                     {/* Name */}
                     <div>
-                        <label className="block mb-1 text-sm">Full Name</label>
+                        <label className="block text-sm text-body mb-1">
+                            Full Name
+                        </label>
+
                         <input
                             type="text"
                             name="name"
                             value={formData.name}
                             onChange={handleInputChange}
                             placeholder="Enter your name"
-                            className="w-full bg-black/40 border border-white/10 rounded-md
-                            px-4 py-2 outline-none focus:border-violet-400"
+                            className="w-full border border-gray-300 rounded-md px-4 py-2
+                            outline-none focus:border-primary"
                         />
+
                         {formData.name && !nameRegex.test(formData.name) && (
-                            <p className="text-red-400 text-xs mt-1">
+                            <p className="text-red-500 text-xs mt-1">
                                 Name must be at least 3 letters and alphabetic.
                             </p>
                         )}
@@ -85,18 +82,22 @@ const AdminRegister = () => {
 
                     {/* Phone */}
                     <div>
-                        <label className="block mb-1 text-sm">Phone</label>
+                        <label className="block text-sm text-body mb-1">
+                            Phone
+                        </label>
+
                         <input
                             type="tel"
                             name="phone"
                             value={formData.phone}
                             onChange={handleInputChange}
                             placeholder="Enter phone number"
-                            className="w-full bg-black/40 border border-white/10 rounded-md
-                            px-4 py-2 outline-none focus:border-violet-400"
+                            className="w-full border border-gray-300 rounded-md px-4 py-2
+                            outline-none focus:border-primary"
                         />
+
                         {formData.phone && !phoneRegex.test(formData.phone) && (
-                            <p className="text-red-400 text-xs mt-1">
+                            <p className="text-red-500 text-xs mt-1">
                                 Enter valid 10-digit number (6–9).
                             </p>
                         )}
@@ -104,18 +105,22 @@ const AdminRegister = () => {
 
                     {/* Email */}
                     <div>
-                        <label className="block mb-1 text-sm">Email</label>
+                        <label className="block text-sm text-body mb-1">
+                            Email
+                        </label>
+
                         <input
                             type="email"
                             name="email"
                             value={formData.email}
                             onChange={handleInputChange}
                             placeholder="example@email.com"
-                            className="w-full bg-black/40 border border-white/10 rounded-md
-                            px-4 py-2 outline-none focus:border-violet-400"
+                            className="w-full border border-gray-300 rounded-md px-4 py-2
+                            outline-none focus:border-primary"
                         />
+
                         {formData.email && !emailRegex.test(formData.email) && (
-                            <p className="text-red-400 text-xs mt-1">
+                            <p className="text-red-500 text-xs mt-1">
                                 Enter a valid email address.
                             </p>
                         )}
@@ -123,48 +128,56 @@ const AdminRegister = () => {
 
                     {/* Address */}
                     <div>
-                        <label className="block mb-1 text-sm">Address</label>
+                        <label className="block text-sm text-body mb-1">
+                            Address
+                        </label>
+
                         <textarea
                             name="address"
                             value={formData.address}
                             onChange={handleInputChange}
                             rows="3"
                             placeholder="Enter address"
-                            className="w-full bg-black/40 border border-white/10 rounded-md
-                            px-4 py-2 outline-none focus:border-violet-400 resize-none"
+                            className="w-full border border-gray-300 rounded-md px-4 py-2
+                            outline-none focus:border-primary resize-none"
                         />
                     </div>
 
                     {/* Password */}
                     <div>
-                        <label className="block mb-1 text-sm">Password</label>
+                        <label className="block text-sm text-body mb-1">
+                            Password
+                        </label>
+
                         <input
                             type="password"
                             name="password"
                             value={formData.password}
                             onChange={handleInputChange}
                             placeholder="Create password"
-                            className="w-full bg-black/40 border border-white/10 rounded-md
-                            px-4 py-2 outline-none focus:border-violet-400"
+                            className="w-full border border-gray-300 rounded-md px-4 py-2
+                            outline-none focus:border-primary"
                         />
+
                         {formData.password && !passwordRegex.test(formData.password) && (
-                            <p className="text-red-400 text-xs mt-1">
+                            <p className="text-red-500 text-xs mt-1">
                                 Min 8 chars, 1 uppercase, 1 lowercase, 1 number.
                             </p>
                         )}
                     </div>
 
-                    {/* Button */}
                     <button
-                        type="submit" 
-                        className="mt-4 bg-violet-600 hover:bg-violet-700
-                        transition rounded-md py-2 font-semibold"
+                        type="submit"
+                        className="mt-4 bg-primary hover:bg-accent text-white
+                        font-semibold py-2 rounded-md transition"
                     >
                         Register
                     </button>
 
                 </form>
+
             </div>
+
         </section>
     );
 };

@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -22,7 +22,6 @@ const AdminLogin = () => {
                 { email, password }
             );
 
-            // save token
             localStorage.setItem("adminToken", res.data.token);
 
             alert("Logged in successfully!");
@@ -39,66 +38,69 @@ const AdminLogin = () => {
     };
 
     return (
-        <div className="relative w-full min-h-screen flex items-center justify-center
-         px-4 text-black">
+        <section className="min-h-screen flex items-center justify-center bg-section px-6 py-20">
 
-            {/* Glow */}
-            <div className="absolute inset-0 blur-3xl
-                bg-[radial-gradient(circle_at_center, rgba(168,85,247,0.18), transparent_70%)]">
-            </div>
+            <div className="w-full max-w-md bg-white rounded-xl shadow-md p-8">
 
-            {/* Card */}
-            <div className="relative z-10 w-full max-w-md bg-white/5 backdrop-blur-md
-                border border-white/10 rounded-2xl shadow-lg p-8">
-
-                <h2 className="text-3xl font-bold text-center mb-8">Admin Login</h2>
+                <h2 className="text-3xl font-bold text-heading text-center mb-8">
+                    Admin Login
+                </h2>
 
                 <form onSubmit={handleLogin} className="flex flex-col gap-5">
+
                     <div>
-                        <label className="block mb-1 text-sm">Email Address</label>
+                        <label className="block text-sm text-body mb-1">
+                            Email Address
+                        </label>
+
                         <input
                             type="email"
                             name="email"
                             value={formData.email}
                             onChange={handleInputChange}
-                            className="w-full bg-black/40 border border-white/10
-                            rounded-md px-4 py-2 outline-none focus:border-violet-400"
+                            className="w-full border border-gray-300 rounded-md px-4 py-2
+                            outline-none focus:border-primary"
                         />
                     </div>
 
                     <div>
-                        <label className="block mb-1 text-sm">Password</label>
+                        <label className="block text-sm text-body mb-1">
+                            Password
+                        </label>
+
                         <input
                             type="password"
                             name="password"
                             value={formData.password}
                             onChange={handleInputChange}
-                            className="w-full bg-black/40 border border-white/10
-                            rounded-md px-4 py-2 outline-none focus:border-violet-400"
+                            className="w-full border border-gray-300 rounded-md px-4 py-2
+                            outline-none focus:border-primary"
                         />
                     </div>
 
-                    <div className="flex justify-center">
-                        <button className="rounded-md bg-purple-500
-                            hover:bg-purple-600 transition
-                            text-xl font-bold px-6 py-2 mt-4">
-                            Login
-                        </button>
-                    </div>
+                    <button
+                        type="submit"
+                        className="mt-4 bg-primary hover:bg-accent text-white
+                        font-semibold py-2 rounded-md transition"
+                    >
+                        Login
+                    </button>
+
                 </form>
 
-                {/* Signup Link */}
-                <p className="text-center text-sm text-gray-300 mt-6">
+                <p className="text-center text-body text-sm mt-6">
                     Don’t have an account?
                     <Link
                         to="/admin/register"
-                        className="text-purple-400 hover:text-purple-300 ml-1 font-semibold"
+                        className="text-primary hover:text-accent ml-1 font-medium"
                     >
                         Sign up
                     </Link>
                 </p>
+
             </div>
-        </div>
+
+        </section>
     );
 };
 

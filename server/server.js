@@ -1,5 +1,7 @@
-import express from "express"
 import dotenv from "dotenv"
+dotenv.config({ path: "./config.env" })
+import express from "express"
+
 // import { GoogleGenAI } from "@google/genai"
 import { router } from "./routers/router.js"
 import cors from "cors"
@@ -7,8 +9,7 @@ import "./database/connect.js"
 import path from "path"
 
 const app = express();
-
-dotenv.config({path: "./config.env"})
+// console.log("Gemini key:", process.env.GEMINI_API_KEY);
 
 const port = process.env.PORT || 5030
 
@@ -19,7 +20,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use(express.urlencoded({extended : true}))
+app.use(express.urlencoded({ extended: true }))
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")))
 
 // const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY})
@@ -35,9 +36,9 @@ app.use("/uploads", express.static(path.join(process.cwd(), "uploads")))
 
 // getResponse();
 
-app.use("/api",router)
+app.use("/api", router)
 
-app.listen(port, () =>{
+app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 })
 

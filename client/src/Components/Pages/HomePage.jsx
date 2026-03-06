@@ -1,11 +1,9 @@
-import React from 'react'
-import Hero from "./Hero.jsx"
-import About from "./About.jsx"
-import Project from "./Project.jsx"
-import Contact from './Contact.jsx'
-import Skills from "./Skills.jsx"
-import Testimonials from './Testimonials.jsx'
-import FeedbackForm from './FeedbackForm.jsx'
+import Hero from '../Features/Hero/Hero'
+import About from '../Features/About/About'
+import Project from '../Features/Projects/Project'
+import Contact from '../Features/Contact/Contact'
+import Skills from '../Features/Skills/Skills'
+import Testimonials from '../Features/Testimonials/Testimonials'
 
 
 const HomePage = () => {
@@ -28,8 +26,7 @@ const HomePage = () => {
            {/*--Testimonials Section*/}
            <Testimonials/>
 
-           {/*--Feedback Section--*/}
-           <FeedbackForm/>
+           
 
             {/*--Contact Section--*/}
             <Contact/>

@@ -6,20 +6,11 @@ import { handleAdminRegistration, handleAdminLogin } from "../controllers/userCo
 import { addProject, getAllProjects, deleteProject, getProjectById, updateProject } from "../controllers/projectController.js";
 import { createNewReview, getAllReviews } from "../controllers/reviewsController.js";
 import { authAdmin } from "../middlewares/authMiddleware.js"
+import { chatController } from "../controllers/chatController.js";
 
 const router = express.Router();
 
-router.get("/chat", async (req, res) => {
-    try {
-        const question = req.query.q || "What is AI";
-        const answer = await getResponse(question);
-        res.json({ answer })
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ msg: "Internal server error" });
-    }
-})
-
+router.post("/chat", chatController)
 
 router.post("/register", handleAdminRegistration)
 
