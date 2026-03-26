@@ -21,7 +21,7 @@ const Footer = () => {
           </a>
 
           <a
-            href="https://linkedin.com/"
+            href="www.linkedin.com/in/saniya-pawankar"
             target="_blank"
             className="hover:text-black transition"
           >

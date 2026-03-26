@@ -71,6 +71,7 @@ const AdminRegister = () => {
                             placeholder="Enter your name"
                             className="w-full border border-gray-300 rounded-md px-4 py-2
                             outline-none focus:border-primary"
+                            autoComplete="off"
                         />
 
                         {formData.name && !nameRegex.test(formData.name) && (
@@ -94,11 +95,12 @@ const AdminRegister = () => {
                             placeholder="Enter phone number"
                             className="w-full border border-gray-300 rounded-md px-4 py-2
                             outline-none focus:border-primary"
+                            autoComplete="off"
                         />
 
                         {formData.phone && !phoneRegex.test(formData.phone) && (
                             <p className="text-red-500 text-xs mt-1">
-                                Enter valid 10-digit number (6–9).
+                                Enter valid 10-digit number (6-9).
                             </p>
                         )}
                     </div>
@@ -117,6 +119,7 @@ const AdminRegister = () => {
                             placeholder="example@email.com"
                             className="w-full border border-gray-300 rounded-md px-4 py-2
                             outline-none focus:border-primary"
+                            autoComplete="off"
                         />
 
                         {formData.email && !emailRegex.test(formData.email) && (
@@ -140,6 +143,7 @@ const AdminRegister = () => {
                             placeholder="Enter address"
                             className="w-full border border-gray-300 rounded-md px-4 py-2
                             outline-none focus:border-primary resize-none"
+                            autoComplete="off"
                         />
                     </div>
 
@@ -157,6 +161,7 @@ const AdminRegister = () => {
                             placeholder="Create password"
                             className="w-full border border-gray-300 rounded-md px-4 py-2
                             outline-none focus:border-primary"
+                            autoComplete="off"
                         />
 
                         {formData.password && !passwordRegex.test(formData.password) && (

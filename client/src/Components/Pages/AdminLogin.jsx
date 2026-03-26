@@ -60,6 +60,7 @@ const AdminLogin = () => {
                             onChange={handleInputChange}
                             className="w-full border border-gray-300 rounded-md px-4 py-2
                             outline-none focus:border-primary"
+                            autoComplete="off"
                         />
                     </div>
 
@@ -75,6 +76,7 @@ const AdminLogin = () => {
                             onChange={handleInputChange}
                             className="w-full border border-gray-300 rounded-md px-4 py-2
                             outline-none focus:border-primary"
+                            autoComplete="off"
                         />
                     </div>
 

@@ -7,6 +7,7 @@ import { addProject, getAllProjects, deleteProject, getProjectById, updateProjec
 import { createNewReview, getAllReviews } from "../controllers/reviewsController.js";
 import { authAdmin } from "../middlewares/authMiddleware.js"
 import { chatController } from "../controllers/chatController.js";
+import { saveContacts } from "../controllers/contactController.js";
 
 const router = express.Router();
 
@@ -27,6 +28,9 @@ router.put("/projects/:id/edit", authAdmin, uploadProjectImage.single("image"), 
 router.delete("/projects/:id", authAdmin, deleteProject);
 
 router.get("/reviews", getAllReviews);
-router.post("/submit_review", createNewReview)
+
+router.post("/submit_review", createNewReview);
+
+router.post("/contact", saveContacts)
 
 export { router }
