@@ -1,8 +1,7 @@
 import { contactModel } from "../models/contactModel.js";
 import { getTransporter } from "../utils/mailer.js";
 
-console.log("EMAIL_USER", process.env.EMAIL_USER);
-console.log("ENAIL_PASS", process.env.EMAIL_PASS);
+
 
 const saveContacts = async (req, res) => {
     try {

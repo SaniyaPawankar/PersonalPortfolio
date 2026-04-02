@@ -6,6 +6,7 @@ import AdminLogin from "../Pages/AdminLogin";
 import AdminRegister from "../Pages/AdminRegister";
 import UpdateProject from "../Pages/UpdateProject";
 import ProjectDetails from "../Pages/ProjectDetails";
+import FeedbackForm from "../Features/Testimonials/FeedbackForm";
 
 const AppRoutes = () => {
   return (
@@ -17,6 +18,7 @@ const AppRoutes = () => {
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/projects/:id/edit" element={<UpdateProject />} />
         <Route path="/addprojects" element={<AddProject />} />
+        <Route path="/review" element={<FeedbackForm />} />
       </Routes>
 
       <ChatBot />
